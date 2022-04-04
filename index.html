@@ -1,16 +1,37 @@
 <head>
+    <meta charset="UTF-8">
+    <title>jimmy的导航</title>
+    <script>
+        // https://blog.csdn.net/animatecat/article/details/85164093
+        navigator.getBattery().then(function (battery) {
+            // 是否正在充电，yes-充电
+            alert("Battery charging? " + (battery.charging ? "yes" : "no"));
+            // 当前剩余电量
+            alert("Battery level: " + battery.level * 100 + "%");
+
+        });
+    </script>
 </head>
 
-
 <body>
-  Hello Pages!
-  <div>
+    Hello Pages!
     <div>
-      <script >
-        alert('你好');
-      </script>
+        <form action="https://www.baidu.com/s">
+            <input type="text" name="word" />
+            <input type="submit" value="百度" />
+        </form>
+        <form action="https://cn.bing.com/search">
+            <input type="text" name="q" />
+            <input type="submit" value="必应英文">
+        </form>
     </div>
-  
-  </div>
-      
+    <div>
+        <div>
+            <script>
+                // alert('你好');
+            </script>
+        </div>
+
+    </div>
+
 </body>
