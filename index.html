@@ -6,15 +6,20 @@
     <head>
         <style type="text/css">
             .b-green {
-                color: "#2EFE64";
+                color: #2EFE64;
+                font-size: 1000%;
             }
 
             .b-orange {
-                color: "#ff0000";
+                color: #f18b06;
             }
 
             .b-red {
-                color: "#ff0000";
+                color: #ff0000;
+            }
+
+            body {
+                font-size: xx-large;
             }
         </style>
     </head>
@@ -23,36 +28,41 @@
         window.onload = function () {
             // https://blog.csdn.net/animatecat/article/details/85164093
             var isCharge;
-            var batteryPercent;
+            var batteryPercent = 0;
             navigator.getBattery().then(function (battery) {
                 isCharge = battery.charging;
                 batteryPercent = Math.round(battery.level * 100) + "%";
             });
             var style;
             if (batteryPercent >= 85) {
-                style = ".b-green";
+                style = "b-green";
             } else if (batteryPercent > 30) {
-                style = ".b-orange";
+                style = "b-orange";
             } else {
-                style = ".b-red";
+                style = "b-red";
             }
             if (!batteryPercent) {
                 batteryPercent = "未知"
-                style = ".b-orange";
+                style = "b-orange";
+            }
+            if (isCharge) {
+                style = "b-green"
             }
             var content = " 电池电量:" + batteryPercent;
             content = isCharge ? "正在充电" : "未在充电" + content;
 
             document.getElementById("phoneinfo").innerHTML = content
             $("#phoneinfo").addClass(style)
+            console.log("battaryPercent:" + batteryPercent)
+            console.log("style:" + style)
         }
     </script>
 </head>
 
 <body>
     <div>
-        <p id="date"></p>
-        <p id="phoneinfo">55</p>
+        <p id="date" ></p>
+        <p id="phoneinfo">待定</p>
         <p id="weather"></p>
     </div>
     <div id="search">
@@ -71,8 +81,4 @@
     <div id="hots">
 
     </div>
-
-
-
-
 </body>
