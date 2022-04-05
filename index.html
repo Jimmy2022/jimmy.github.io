@@ -1,5 +1,7 @@
 <head>
     <meta charset="UTF-8">
+    <!-- http://www.javashuo.com/article/p-vaxcmhxh-eq.html -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>jimmy的导航</title>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 
@@ -18,7 +20,12 @@
             }
 
             body {
-                font-size: xx-large;
+                font-size: 150%;
+            }
+
+            .search-box {
+                text-align: center;
+        
             }
         </style>
     </head>
@@ -30,7 +37,7 @@
             var batteryPercent = 0;
             navigator.getBattery().then(function (battery) {
                 isCharge = battery.charging;
-                batteryPercent = Math.round(battery.level * 100) + "%";
+                batteryPercent = Math.round(battery.level * 100);
                 var style;
                 if (batteryPercent >= 85) {
                     style = "b-green";
@@ -46,7 +53,7 @@
                 if (isCharge) {
                     style = "b-green"
                 }
-                var content = " 电池电量:" + batteryPercent;
+                var content = " 电池电量:" + batteryPercent + "%";
                 content = (isCharge ? "正在充电" : "未在充电") + content;
 
                 document.getElementById("phoneinfo").innerHTML = content
@@ -65,14 +72,14 @@
         <p id="phoneinfo">待定</p>
         <p id="weather"></p>
     </div>
-    <div id="search">
+    <div id="search" class="search-box">
         <form action="https://www.baidu.com/s">
-            <input type="text" name="word" />
-            <input type="submit" value="百度" />
+            <input type=" text" name="word" style="font-size: 50%;"/>
+            <input type="submit" value="百度" style="font-size: 90%"/>
         </form>
         <form action="https://cn.bing.com/search">
-            <input type="text" name="q" />
-            <input type="submit" value="必应英文">
+            <input type="text" name="q" style="font-size: 50%" />
+            <input type="submit" value="必应" style="font-size: 90%">
         </form>
     </div>
     <div id="webs">
