@@ -7,7 +7,6 @@
         <style type="text/css">
             .b-green {
                 color: #2EFE64;
-                font-size: 1000%;
             }
 
             .b-orange {
@@ -32,36 +31,37 @@
             navigator.getBattery().then(function (battery) {
                 isCharge = battery.charging;
                 batteryPercent = Math.round(battery.level * 100) + "%";
-            });
-            var style;
-            if (batteryPercent >= 85) {
-                style = "b-green";
-            } else if (batteryPercent > 30) {
-                style = "b-orange";
-            } else {
-                style = "b-red";
-            }
-            if (!batteryPercent) {
-                batteryPercent = "未知"
-                style = "b-orange";
-            }
-            if (isCharge) {
-                style = "b-green"
-            }
-            var content = " 电池电量:" + batteryPercent;
-            content = isCharge ? "正在充电" : "未在充电" + content;
+                var style;
+                if (batteryPercent >= 85) {
+                    style = "b-green";
+                } else if (batteryPercent > 30) {
+                    style = "b-orange";
+                } else {
+                    style = "b-red";
+                }
+                if (!batteryPercent) {
+                    batteryPercent = "未知"
+                    style = "b-orange";
+                }
+                if (isCharge) {
+                    style = "b-green"
+                }
+                var content = " 电池电量:" + batteryPercent;
+                content = (isCharge ? "正在充电" : "未在充电") + content;
 
-            document.getElementById("phoneinfo").innerHTML = content
-            $("#phoneinfo").addClass(style)
-            console.log("battaryPercent:" + batteryPercent)
-            console.log("style:" + style)
+                document.getElementById("phoneinfo").innerHTML = content
+                $("#phoneinfo").addClass(style)
+
+                console.log("battaryPercent:" + batteryPercent)
+            });
+
         }
     </script>
 </head>
 
 <body>
     <div>
-        <p id="date" ></p>
+        <p id="date"></p>
         <p id="phoneinfo">待定</p>
         <p id="weather"></p>
     </div>
