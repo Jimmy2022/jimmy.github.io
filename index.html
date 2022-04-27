@@ -25,7 +25,7 @@
 
             .search-box {
                 text-align: center;
-        
+
             }
         </style>
     </head>
@@ -60,38 +60,74 @@
                 $("#phoneinfo").addClass(style)
 
                 console.log("battaryPercent:" + batteryPercent)
+
+                $.getJSON('https://7re15m3a5ra8w.cfc-execute.bj.baidubce.com/', function (res) {
+                    console.log(res)
+                })
+
+                $.get('https://baidu.com/', function (res) {
+                    console.log(res)
+                })
             });
 
         }
     </script>
+    <script>
+        // https://baijiahao.baidu.com/s?id=1707034727158253423&wfr=spider&for=pc
+        const serach_engine_map = new Map();
+        serach_engine_map.set('baidu', ['https://www.baidu.com/s?word=']);
+        serach_engine_map.set('bing_cn', ['https://cn.bing.com/search?q=']);
+        serach_engine_map.set('yandex', ['https://yandex.com/search/?text=']);
+        serach_engine_map.set('zhihu', ['https://www.zhihu.com/search?type=content&q=']);
+        serach_engine_map.set('google', ['https://www.google.com/search?q=']);
+
+        function search(type) {
+            var content = document.getElementById("search-content").value;
+            window.location.href = serach_engine_map.get(type)[0] + content
+        }
+
+        function search_image(type) {
+            var content = document.getElementById("search-content").value;
+            return serach_engine_map.get(type)[1]
+        }
+
+    </script>
+
 </head>
 
 <body>
     <div>
         <p id="date"></p>
         <p id="phoneinfo">待定</p>
+        <p id="weather">天气:
+            <a id="weather-bj" href="http://www.weather.com.cn/weathern/101110901.shtml">宝鸡</a>
+            <a id="weather-xa" href="http://www.weather.com.cn/weathern/101110101.shtml">西安</a>
+            <a id="weather-cd" href="http://www.weather.com.cn/weathern/101270101.shtml">成都</a>
+            <a id="weather-sz" href="http://www.weather.com.cn/weathern/101280601.shtml">深圳</a> </p>
         <a id="contagion-risk-city" href="http://bmfw.www.gov.cn/myqfxdjcx/index.html">疫情风险地区查询</a>
         <a id="12306" href="http://mobile.12306.cn/weixin/wxcore/init">火车票查询</a>
-        <p id="weather">天气:<a id="weather" href="http://www.weather.com.cn/weather1d/101110901.shtml">宝鸡</a> 
-               <a id="weather" href="http://www.weather.com.cn/weather1d/101110101.shtml">西安</a>
-               <a id="weather" href="http://www.weather.com.cn/weather1d/101270101.shtml">成都</a>
-               <a id="weather" href="http://www.weather.com.cn/weather1d/101280601.shtml">深圳</a> </p>
+        <div id="search-dev" class="search-box">
+            <!-- https://www.w3school.com.cn/tags/tag_input.asp -->
+            <input type="text" name="word" value="日历" style="font-size: 50%;" id="search-content" height="40" />
+        </div>
+        <div id="search-button">
+            <p align="center"> 
+                <!-- https://segmentfault.com/q/1010000006087289 -->
+                <input type="image" onclick=search("baidu") src='https://www.baidu.com/favicon.ico' width="2%" />
+                <input type="image" onclick=search("bing") src="https://cn.bing.com/sa/simg/favicon-2x.ico"
+                    width="2%" />
+                <input type="image" onclick=search("yandex")
+                    src="https://avatars.mds.yandex.net/get-bunker/56833/d6c72510e34955b7c7fef9fd3af8f71a88763081/orig"
+                    width="2%" />
+                <input type="image" onclick=search("google") src="http://www.google.cn/favicon.ico" width="2%" />
+                <input type="image" onclick=search("zhihu") src="https://static.zhihu.com/heifetz/favicon.ico"
+                    width="2%" />
+            </p>
+        </div>
+        <div id="webs">
 
-    </div>
-    <div id="search" class="search-box">
-        <form action="https://www.baidu.com/s">
-            <input type=" text" name="word" style="font-size: 50%;"/>
-            <input type="submit" value="百度" style="font-size: 90%"/>
-        </form>
-        <form action="https://cn.bing.com/search">
-            <input type="text" name="q" style="font-size: 50%" />
-            <input type="submit" value="必应" style="font-size: 90%">
-        </form>
-    </div>
-    <div id="webs">
+        </div>
+        <div id="hots">
 
-    </div>
-    <div id="hots">
-
-    </div>
+        </div>
 </body>
