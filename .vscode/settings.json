@@ -1,0 +1,6 @@
+{
+    "vsintellicode.typescript.completionsEnabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "typescript.validate.enable": false,
+    "javascript.validate.enable": false
+}
