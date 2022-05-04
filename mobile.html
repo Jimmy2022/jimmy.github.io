@@ -1,6 +1,6 @@
 <head>
     <!-- https://www.cnblogs.com/javahr/p/8409324.html -->
-    <meta charset="UTF-8" http-equiv="refresh" content="30">
+    <meta charset="UTF-8" http-equiv="refresh" content="120">
     <!-- http://www.javashuo.com/article/p-vaxcmhxh-eq.html -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>jimmy的导航</title>
@@ -15,10 +15,18 @@
 <body>
     <div>
         <a id="date"></a>
-        <a id="phoneinfo" style="width: auto; height: auto;">待定</a>
-        <a id="contagion-risk-city" href="http://bmfw.www.gov.cn/myqfxdjcx/index.html">疫情风险</a>
-        <a id="12306" href="https://trains.ctrip.com/">火车票</a>
+        <div id="phoneinfo" style="width: auto; height: auto;">
+            <span id="battery"></span>
+            <span id="ip"></span>
+        </div>
+        <br>
+        <div id="web">
+            <a id="riskCity" href="http://bmfw.www.gov.cn/myqfxdjcx/index.html">疫情风险</a>
+            <a id="12306" href="https://trains.ctrip.com/">火车票</a>
+            <a id="DNA" href="https://szwj.borycloud.com/wh5/index.html#/">核酸</a>
+        </div>
 
+        <br>
         <div id="search" class="search-div">
             <input id="search-input" type="text" class="search-box"/>
             <div id="search-button">
@@ -27,13 +35,7 @@
             </div>
         </div>
         <div id="hots" title="wasteLife" style="text-align: center; text-size-adjust: 150%;">
-            <button id="wasteTime" onclick="takeYourLife()">无聊人生</button>
-        </div>
-        <div id="webs">
-
-        </div>
-        <div id="hots">
-
+            <button id="wasteTime" onclick="takeYourLife()" class="weirdButton">无聊人生</button>
         </div>
 </body>
 <script src="./js/buttom.js"></script>

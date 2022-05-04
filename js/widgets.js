@@ -2,7 +2,7 @@
 var SEARCH_ENGINE_MAP = new Map();
 // type, searchUrl, icoUrl, hot
 SEARCH_ENGINE_MAP.set('baidu', {
-	'main': 'https://baidu.com',                     // required
+	'url': 'https://baidu.com',                     // required
 	'search': 'https://www.baidu.com/s?word={0}',    // optional
 	'explor': ['https://top.baidu.com/board?tab=realtime'],                                    // optional
 	'icon': {
@@ -136,7 +136,7 @@ String.prototype.format = function () {
 };
 
 // search engine to show
-var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'toutiao', 'pocket', 'zhihu', 'ithome','xueqiu']
+var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'pocket', 'zhihu', 'ithome','toutiao','xueqiu']
 var DEFAULT_ENGINE = 'baidu'
 var SEARCH_INPUT = 'search-input'
 
@@ -173,13 +173,12 @@ function showSearchEngine() {
 		if(!customRatio){
 			customRatio = 1
 		}
-		icoSize = icoSize * customRatio
-		content = content + '<input type="image" onclick=window.searchEngine("{0}") \
-		src=\'./images/icon/{1}.ico\' style="width:{2}%" />'.format(type,type, icoSize) + ' '
-		if(isMobile() && i % 5 == 0){
+		if(isMobile() && i != 0 && i  % 5 == 0){
 			content = content + "<br>"
 		}
-		
+		icoSize = icoSize * customRatio
+		content = content + '&nbsp' + '<input type="image" onclick=window.searchEngine("{0}") \
+		src=\'./images/icon/{1}.ico\' style="width:{2}%" />'.format(type,type, icoSize) + ' '
 	}
 	document.getElementById('searhers').innerHTML = content;
 
@@ -214,12 +213,36 @@ window.onload = function () {
 			style = "b-charging"
 		}
 		var content = batteryPercent + "%"
-		document.getElementById("phoneinfo").innerHTML = content
-		$("#phoneinfo").addClass(style).addClass("battery")
-
+		document.getElementById("battery").innerHTML = content
+		$("#battery").addClass(style).addClass("battery")
 		console.log("battaryPercent:" + batteryPercent)
 
+		content = '&nbsp'
+		let ip, city = 'unknown', isp
+		// https://www.geeksforgeeks.org/how-to-get-client-ip-address-using-javascript/
+		$.get("https://ipinfo.io", function(response, content, l) {
+			ip = response.ip
+			city = response.city
+			isp = response.org
+        }, "json").done(function (){
+			if(isp.match(/Mobile/ig)){
+				isp = '中国移动'
+			} else if (isp.match(/CHINANET/ig)){
+				isp = '中国电信'
+			} else {
+				isp = '中国联通'
+			}
+			content = content + '<a href="https://ipaddress.com/ipv4/{0}" />{1}</a>\
+			<a href="https://weather.cma.cn/web/weather/map.html"/>{2}</a> {3}'.format(ip,ip,city,isp)
+			// content = content + ip + ' ' + city + ' ' + isp
+			document.getElementById("ip").innerHTML = content
+		})
 
+		if(!isMobile()){
+			document.getElementById('search-input').focus()
+		}
+
+		// test
 		$.get('https://baidu.com/',
 			function (res) {
 				console.log(res)
@@ -230,7 +253,7 @@ window.onload = function () {
 };
 
 function takeYourLife() {
-	explors = []
+	explors = ['https://tophub.today/']
 	values = SEARCH_ENGINE_MAP.values()
 	for(const e of values) {
 		explors = explors.concat(e['explor'])
