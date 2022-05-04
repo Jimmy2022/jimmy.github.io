@@ -1,0 +1,10 @@
+input[type="text"] {
+    align-self: center;
+    color:cornflowerblue;
+    font-size: 110%;
+    width: 30%;
+}
+
+body {
+    font-size: 125%;
+}

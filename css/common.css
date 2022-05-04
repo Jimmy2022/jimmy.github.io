@@ -1,0 +1,49 @@
+.battery {
+    border-radius:10px;
+    border:  solid, darkslategray
+}
+.b-green {
+    font: #2EFE64;
+}
+
+.b-orange {
+    font: #f18b06;
+}
+
+.b-red {
+    font: #ff0000;
+}
+/* https://www.cnblogs.com/dongzhi1111/p/12032119.html?ivk_sa=1024320u */
+/* https://codepen.io/P1N2O/pen/pyBNzX?editors=1100 */
+.b-charging {
+    background: linear-gradient(to left, #e0fade , #7df6a5 ,#36f576,#4cf760);
+	background-size: 350% 100%;
+	animation: gradient 3.5s ease infinite;
+    display: inline-block;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.search-div {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.search-box {
+    border: orchid, solid;
+    border-radius: 20px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%
+}

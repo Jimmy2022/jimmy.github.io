@@ -5,66 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>jimmy的导航</title>
     <!-- https://www.jq22.com/cdn/#a2 -->
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js"></script>
-    <script src="./js/widgets.js"></script>
-
-    <head>
-        <style type="text/css">
-            .b-green {
-                color: #2EFE64;
-            }
-
-            .b-orange {
-                color: #f18b06;
-            }
-
-            .b-red {
-                color: #ff0000;
-            }
-
-            body {
-                font-size: 150%;
-            }
-
-            .search-box {
-                text-align: center;
-
-            }
-        </style>
-    </head>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js"></script>
+    <script src="js/widgets.js"></script>
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types -->
+    <link rel="stylesheet" href="./css/mobile.css">
+    <link rel="stylesheet" href="./css/common.css">
 </head>
-
 <body>
     <div>
-        <p id="date"></p>
-        <p id="phoneinfo">待定</p>
-        <p id="weather">天气:
-            <a id="weather-bj" href="http://www.weather.com.cn/weathern/101110901.shtml">宝鸡</a>
-            <a id="weather-xa" href="http://www.weather.com.cn/weathern/101110101.shtml">西安</a>
-            <a id="weather-cd" href="http://www.weather.com.cn/weathern/101270101.shtml">成都</a>
-            <a id="weather-sz" href="http://www.weather.com.cn/weathern/101280601.shtml">深圳</a>
-        </p>
-        <a id="contagion-risk-city" href="http://bmfw.www.gov.cn/myqfxdjcx/index.html">疫情风险地区查询</a>
-        <a id="12306" href="http://mobile.12306.cn/weixin/wxcore/init">火车票查询</a>
-        <div id="search-dev" class="search-box">
-            <!-- https://www.w3school.com.cn/tags/tag_input.asp -->
-            <input id="search-content" type="text" name="word" style="font-size: 50%;" height="40" />
-        </div>
-        <div id="search-button">
-            <p align="center">
-                <!-- https://segmentfault.com/q/1010000006087289 -->
-                <input type="image" onclick=search("baidu") src='https://www.baidu.com/favicon.ico' width="8%" />
+        <a id="date"></a>
+        <a id="phoneinfo" style="width: auto; height: auto;">待定</a>
+        <a id="contagion-risk-city" href="http://bmfw.www.gov.cn/myqfxdjcx/index.html">疫情风险</a>
+        <a id="12306" href="https://trains.ctrip.com/">火车票</a>
 
-                <input type="image" onclick=search("bing_cn") src="https://cn.bing.com/sa/simg/favicon-2x.ico"
-                    width="8%" />
-                <input type="image" onclick=search("yandex")
-                    src="https://avatars.mds.yandex.net/get-bunker/56833/d6c72510e34955b7c7fef9fd3af8f71a88763081/orig"
-                    width="8%" />
-                <input type="image" onclick=search("google") src="http://www.google.cn/favicon.ico" width="8%" />
-                <input type="image" onclick=search("zhihu") src="https://static.zhihu.com/heifetz/favicon.ico"
-                    width="8%" />
-            </p>
+        <div id="search" class="search-div">
+            <input id="search-input" type="text" class="search-box"/>
+            <div id="search-button">
+                <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function  window.search is preserve-->
+                <p id = 'searhers'></p>
+            </div>
+        </div>
+        <div id="hots" title="wasteLife" style="text-align: center; text-size-adjust: 150%;">
+            <button id="wasteTime" onclick="takeYourLife()">无聊人生</button>
         </div>
         <div id="webs">
 
@@ -73,3 +36,4 @@
 
         </div>
 </body>
+<script src="./js/buttom.js"></script>

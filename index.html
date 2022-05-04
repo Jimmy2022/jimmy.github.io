@@ -9,9 +9,9 @@
 
     /* Using test() method to search regexp in details
     it returns boolean value*/
-    let isMobileDevice = regexp.test(details);
+    var isMobile = regexp.test(details);
 
-    if (isMobileDevice) {
+    if (isMobile) {
         document.location.href = "mobile.html"
     } else {
         document.location.href = "pc.html"

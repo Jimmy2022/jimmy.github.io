@@ -1,0 +1,16 @@
+body {
+    font-size: 120%;
+}
+
+.search-box {
+    margin-top: 5%;
+    width: 75%;
+    font-size: 120%;
+    
+}
+
+input[type="text"] {
+    align-self: center;
+    color:rgb(245, 78, 40);
+    font-size: 100%;
+}
