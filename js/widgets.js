@@ -166,7 +166,7 @@ function showSearchEngine() {
 	for (i in ENGINES) {
 		let icoSize = 2.5
 		if (isMobile()) {
-			icoSize = 8
+			icoSize = 12
 		} 
 		let type = ENGINES[i]
 		customRatio = isMobile() ?  SEARCH_ENGINE_MAP.get(type)['icon']['mobile'] : SEARCH_ENGINE_MAP.get(type)['icon']['pc']
@@ -198,17 +198,17 @@ window.onload = function () {
 	navigator.getBattery().then(function (battery) {
 		isCharge = battery.charging;
 		batteryPercent = Math.round(battery.level * 100);
-		var batteryInfoStyle;
+		let style;
 		if (batteryPercent >= 85) {
-			batteryInfoStyle = "b-green"
+			style = "b-green"
 		} else if (batteryPercent > 30) {
-			batteryInfoStyle = "b-orange"
+			style = "b-orange"
 		} else {
-			batteryInfoStyle = "b-red"
+			style = "b-red"
 		}
 		if (!batteryPercent) {
 			batteryPercent = "未知";
-			batteryInfoStyle = "b-orange"
+			style = "b-orange"
 		}
 		if (isCharge) {
 			style = "b-charging"
