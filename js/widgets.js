@@ -124,6 +124,15 @@ SEARCH_ENGINE_MAP.set('maimai', {
 	},
 });
 
+SEARCH_ENGINE_MAP.set('smzdm', {
+	'url': 'https://www.smzdm.com/',
+	'search': 'https://search.smzdm.com/?c=home&s={0}',
+	'explor': ['https://post.smzdm.com/'],
+	'icon': {
+		'url': 'https://www.zhidemai.com/favicon.ico',
+	},
+});
+
 // https://coolapk.com/favicon.ico
 // https://xueqiu.com/today
 
@@ -136,7 +145,7 @@ String.prototype.format = function () {
 };
 
 // search engine to show
-var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'pocket', 'zhihu', 'ithome','toutiao','xueqiu']
+var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'pocket', 'zhihu', 'ithome','toutiao','xueqiu', 'smzdm']
 var DEFAULT_ENGINE = 'baidu'
 var SEARCH_INPUT = 'search-input'
 
