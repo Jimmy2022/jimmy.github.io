@@ -230,14 +230,13 @@ window.onload = function () {
 		document.getElementById("battery").innerHTML = content
 		$("#battery").addClass(style).addClass("battery")
 		console.log("battaryPercent:" + batteryPercent);
-	
 	});  
 	}
-		
-	let content = window.batteryPercent + "%"
+	// https://stackoverflow.com/questions/5786851/define-a-global-variable-in-a-javascript-function	
+	let content = batteryPercent + "%"
 	document.getElementById("battery").innerHTML = content
-	$("#battery").addClass(window.style).addClass("battery")
-	console.log("battaryPercent:" + window.batteryPercent);
+	$("#battery").addClass(style).addClass("battery")
+	console.log("battaryPercent:" + batteryPercent);
 
 	content = '&nbsp'
 	let ip, city = 'unknown', isp
