@@ -203,10 +203,15 @@ window.onload = function () {
 	// https://blog.csdn.net/animatecat/article/details/85164093
 	var isCharge;
 	var batteryPercent = 0;
+	// https://github.com/vueuse/vueuse/issues/588
+	const isSupported = navigator && 'getBattery' in navigator 
+	var isCharge = false;
+	var batteryPercent = -1;
+	var style = "b-red";
+	if (isSupported) {	
 	navigator.getBattery().then(function (battery) {
 		isCharge = battery.charging;
 		batteryPercent = Math.round(battery.level * 100);
-		let style;
 		if (batteryPercent >= 85) {
 			style = "b-green"
 		} else if (batteryPercent > 30) {
@@ -221,45 +226,51 @@ window.onload = function () {
 		if (isCharge) {
 			style = "b-charging"
 		}
-		var content = batteryPercent + "%"
+		let content = batteryPercent + "%"
 		document.getElementById("battery").innerHTML = content
 		$("#battery").addClass(style).addClass("battery")
-		console.log("battaryPercent:" + batteryPercent)
+		console.log("battaryPercent:" + batteryPercent);
+	
+	});  
+	}
+		
+	let content = window.batteryPercent + "%"
+	document.getElementById("battery").innerHTML = content
+	$("#battery").addClass(window.style).addClass("battery")
+	console.log("battaryPercent:" + window.batteryPercent);
 
-		content = '&nbsp'
-		let ip, city = 'unknown', isp
-		// https://www.geeksforgeeks.org/how-to-get-client-ip-address-using-javascript/
-		$.get("https://ipinfo.io", function(response, content, l) {
-			ip = response.ip
-			city = response.city
-			isp = response.org
-        }, "json").done(function (){
-			if(isp.match(/Mobile/ig)){
-				isp = '中国移动'
-			} else if (isp.match(/CHINANET/ig)){
-				isp = '中国电信'
-			} else if (isp.match(/Unicom/ig)) {
-				isp = '中国联通'
-			}
-			var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            var netType = connection.type;
-			content = content + '<a href="https://ipaddress.com/ipv4/{0}" />{1}</a>\
-			<a href="https://weather.cma.cn/web/weather/map.html"/>{2}</a> {3}-{4}'.format(ip,ip,city,isp,netType)
-			// content = content + ip + ' ' + city + ' ' + isp
-			document.getElementById("ip").innerHTML = content
-		})
-
-		if(!isMobile()){
-			document.getElementById('search-input').focus()
+	content = '&nbsp'
+	let ip, city = 'unknown', isp
+	// https://www.geeksforgeeks.org/how-to-get-client-ip-address-using-javascript/
+	$.get("https://ipinfo.io", function(response, content, l) {
+		ip = response.ip
+		city = response.city
+		isp = response.org
+	}, "json").done(function (){
+		if(isp.match(/Mobile/ig)){
+			isp = '中国移动'
+		} else if (isp.match(/CHINANET/ig)){
+			isp = '中国电信'
+		} else if (isp.match(/Unicom/ig)) {
+			isp = '中国联通'
 		}
+		var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+		var netType = connection ? connection.effectiveType : '';
+		content = content + '<a href="https://ipaddress.com/ipv4/{0}" />{1}</a>\
+		<a href="https://weather.cma.cn/web/weather/map.html"/>{2}</a> {3}-{4}'.format(ip,ip,city,isp,netType)
+		// content = content + ip + ' ' + city + ' ' + isp
+		document.getElementById("ip").innerHTML = content
+	})
 
-		// test
-		$.get('https://baidu.com/',
-			function (res) {
-				console.log(res)
-			})
-	});
+	if(!isMobile()){
+		document.getElementById('search-input').focus()
+	}
 
+	// test
+	$.get('https://baidu.com/',
+		function (res) {
+			console.log(res)
+		})
 	showSearchEngine();
 };
 
