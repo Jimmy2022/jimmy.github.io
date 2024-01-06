@@ -238,11 +238,13 @@ window.onload = function () {
 				isp = '中国移动'
 			} else if (isp.match(/CHINANET/ig)){
 				isp = '中国电信'
-			} else {
+			} else if (isp.match(/Unicom/ig)) {
 				isp = '中国联通'
 			}
+			var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var netType = connection.type;
 			content = content + '<a href="https://ipaddress.com/ipv4/{0}" />{1}</a>\
-			<a href="https://weather.cma.cn/web/weather/map.html"/>{2}</a> {3}'.format(ip,ip,city,isp)
+			<a href="https://weather.cma.cn/web/weather/map.html"/>{2}</a> {3}-{4}'.format(ip,ip,city,isp,netType)
 			// content = content + ip + ' ' + city + ' ' + isp
 			document.getElementById("ip").innerHTML = content
 		})
