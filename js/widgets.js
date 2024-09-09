@@ -132,6 +132,15 @@ SEARCH_ENGINE_MAP.set('smzdm', {
 		'url': 'https://www.zhidemai.com/favicon.ico',
 	},
 });
+SEARCH_ENGINE_MAP.set('metaso', {
+	'url': 'https://metaso.cn/',
+	'search': 'https://metaso.cn/?q={0}',
+	'explor': [],
+	'icon': {
+		'url': 'https://metaso.cn/favicon.ico',
+	},
+});
+
 
 // https://coolapk.com/favicon.ico
 // https://xueqiu.com/today
@@ -145,8 +154,8 @@ String.prototype.format = function () {
 };
 
 // search engine to show
-var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'pocket', 'zhihu', 'ithome','toutiao','xueqiu', 'smzdm']
-var DEFAULT_ENGINE = 'baidu'
+var ENGINES = ['baidu', 'bing_cn', 'yandex', 'google', 'github', 'bilibili', 'weibo', 'pocket', 'zhihu', 'ithome','toutiao','xueqiu', 'smzdm','metaso']
+var DEFAULT_ENGINE = 'metaso'
 var SEARCH_INPUT = 'search-input'
 
 function searchEngine(type) {
